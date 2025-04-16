@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Run the Docker container in detached mode, exposing port 8081
                 script {
-                    sh 'docker run -d -p 8081:80 $DOCKER_IMAGE'
+                    bat 'docker run -d -p 8081:80 $DOCKER_IMAGE'
                 }
             }
         }
@@ -37,8 +37,8 @@ pipeline {
         always {
             // Clean up: Stop and remove the running container after the build
             script {
-                sh 'docker ps -q | xargs -I {} docker stop {}'
-                sh 'docker ps -a -q | xargs -I {} docker rm {}'
+                bat 'docker ps -q | xargs -I {} docker stop {}'
+                bat 'docker ps -a -q | xargs -I {} docker rm {}'
             }
         }
     }
