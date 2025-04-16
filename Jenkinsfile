@@ -10,8 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pull the latest code from GitHub
-                git 'https://github.com/yourusername/my-docker-webapp.git'
-            }
+                git 'https://github.com/archis04/my-docker-webapp.git'
         }
 
         stage('Build Docker Image') {
