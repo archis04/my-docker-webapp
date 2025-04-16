@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Building Docker image using Dockerfile located in the root directory
-                    bat 'docker build -t $DOCKER_IMAGE .'
+                    bat "docker build -t ${DOCKER_IMAGE} ."  // Correct variable substitution
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Running the container from the Docker image built in the previous stage
-                    bat 'docker run -d -p 8080:80 $DOCKER_IMAGE'
+                    bat "docker run -d -p 8080:80 ${DOCKER_IMAGE}"  // Correct variable substitution
                 }
             }
         }
