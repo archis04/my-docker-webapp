@@ -11,6 +11,7 @@ pipeline {
             steps {
                 // Pull the latest code from GitHub
                 git 'https://github.com/archis04/my-docker-webapp.git'
+            }  // Close the Checkout stage here
         }
 
         stage('Build Docker Image') {
