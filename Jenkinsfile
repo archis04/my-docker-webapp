@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'your_image_name'  // Replace with your desired image name
+        DOCKER_IMAGE = 'your_image_name'
+        DOCKER_PORT = '8081'  // Set a different port if needed
     }
 
     stages {
@@ -15,8 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Building Docker image using Dockerfile located in the root directory
-                    bat "docker build -t ${DOCKER_IMAGE} ."  // Correct variable substitution
+                    bat "docker build -t ${DOCKER_IMAGE} ."
                 }
             }
         }
@@ -24,8 +24,8 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    // Running the container from the Docker image built in the previous stage
-                    bat "docker run -d -p 8080:80 ${DOCKER_IMAGE}"  // Correct variable substitution
+                    // Run the container using a different port if 8080 is unavailable
+                    bat "docker run -d -p ${DOCKER_PORT}:80 ${DOCKER_IMAGE}"
                 }
             }
         }
