@@ -27,7 +27,8 @@ pipeline {
     }
     post {
         always {
-            // Handle post actions if necessary
+            // Add steps to always run, for example, a simple echo step
+            echo 'This will run after the pipeline finishes'
         }
     }
 }
